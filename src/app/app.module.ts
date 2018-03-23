@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BooksApiService } from './services/booksApi.service';
 
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './app.component';
 import { BookComponent } from './components/book/book.component';
 import { BookListComponent } from './components/bookList/bookList.component';
 import { SearchComponent } from './components/search/search.component';
@@ -30,14 +31,13 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BooksApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
