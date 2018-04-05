@@ -1,1 +1,16 @@
-<div>Book</div>
+<div class="book">
+    <div class="book-top">
+      <div class="book-cover" [ngStyle]= "{'background-image': 'url(' + book.imageLinks.thumbnail + ')'}"></div>
+      <div class="book-shelf-changer">
+        <select (change)="updateShelf(book, $event)">
+          <option value="none" disabled>Move to...</option>
+          <option value="currentlyReading">Currently Reading</option>
+          <option value="wantToRead">Want to Read</option>
+          <option value="read">Read</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+    </div>
+    <div class="book-title">{{book.title}}</div>
+    <div class="book-authors">{{bookAuthors(book.authors)}}</div>
+  </div>

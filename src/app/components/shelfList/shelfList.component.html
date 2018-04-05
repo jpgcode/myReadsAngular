@@ -1,0 +1,14 @@
+<div class="bookshelfs">
+  <div *ngFor="let shelf of shelfs">
+    <div class="bookshelf">
+      <h2 class="bookshelf-title">{{shelf}}</h2>
+      <div class="bookshelf-books">
+        <ol class="books-grid">
+          <li *ngFor="let book of booksInShelf(shelf)">
+              <book [shelf]="shelf" [book]="book"></book>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

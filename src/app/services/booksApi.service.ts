@@ -4,20 +4,20 @@ import { Observable } from 'rxjs/Observable';
 import { HttpHeaders } from '@angular/common/http';
 
 import { Books } from '../interfaces/books';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class BooksApiService {
 
-  public api: String = 'https://reactnd-books-api.udacity.com';
-  public token: any;
-  public headers: any;
+  private api: String = 'https://reactnd-books-api.udacity.com';
+  private token: any;
+  private headers: any;
+
+  public books$ = new Subject<any>();
 
   constructor(private http: HttpClient) {
 
-    // Set token
-    if (!this.token){
-      this.token = localStorage.token = Math.random().toString(36).substr(-8)
-    }
+
 
     // Set headers
     this.headers = {
@@ -30,19 +30,19 @@ export class BooksApiService {
   }
 
   public get(bookId): any {
-    return this.http.get(`${this.api}/books/${bookId}`, this.headers);
+    return this.http.get(`${this.api}/books/${bookId}`);
   }
 
   public getAll(): any {
-    return this.http.get(`${this.api}/books`, this.headers);
+    return this.http.get(`${this.api}/books`);
   }
 
   public update(book, shelf): any {
-    return this.http.put(`${this.api}/books/${book.id}`, JSON.stringify({ shelf }, this.headers));
+    return this.http.put(`${this.api}/books/${book.id}`, JSON.stringify({ shelf }));
   }
 
   public search(query, maxResults): any {
-    return this.http.post(`${this.api}/search`, JSON.stringify({ query, maxResults }, this.headers));
+    return this.http.post(`${this.api}/search`, JSON.stringify({ query, maxResults }));
   }
 
 }

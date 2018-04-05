@@ -12,6 +12,9 @@ import { SearchComponent } from './components/search/search.component';
 import { ShelfListComponent } from './components/shelfList/shelfList.component';
 import { PageNotFoundComponent } from './components/pageNotFound/pageNotFound.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token.interceptor';
+
 
 // Define routes
 const appRoutes: Routes = [
@@ -36,6 +39,11 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     BooksApiService
   ],
   bootstrap: [AppComponent]

@@ -1,1 +1,14 @@
-<div>Booklist</div>
+<div class="list-books">
+  <div class="list-books-title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="list-books-content">
+    <div>
+        <shelflist [books]="books" [shelfs]="shelfs"></shelflist>
+    </div>
+  </div>
+
+  <div class="open-search">
+    <!-- <Link to="/search">Add a book</Link> -->
+  </div>
+</div>
