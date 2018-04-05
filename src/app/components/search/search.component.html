@@ -1,1 +1,16 @@
-<div>Search</div>
+
+<div class="search-books">
+  <div class="search-books-bar">
+    <a class="close-search" href="/">Close</a>
+    <div class="search-books-input-wrapper">
+      <input type="text" placeholder="Search by title or author" value="" (input)="updateQuery($event.target.value)" />
+    </div>
+  </div>
+  <div class="search-books-results">
+    <ol class="books-grid">
+      <li *ngFor="let book of booksInShelf()">
+          <book [shelf]="shelf" [book]="book"></book>
+      </li>
+    </ol>
+  </div>
+</div>

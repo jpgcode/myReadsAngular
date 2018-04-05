@@ -41,8 +41,8 @@ export class BooksApiService {
     return this.http.put(`${this.api}/books/${book.id}`, JSON.stringify({ shelf }));
   }
 
-  public search(query, maxResults): any {
-    return this.http.post(`${this.api}/search`, JSON.stringify({ query, maxResults }));
+  public search(query): any {
+    return this.http.post(`${this.api}/search`, JSON.stringify({ query }));
   }
 
 }
